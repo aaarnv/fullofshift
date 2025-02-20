@@ -1,14 +1,13 @@
 import Link from 'next/link'
 import React from 'react'
+import "@radix-ui/themes/styles.css";
 
 const NavBar = () => {
   return (
     <nav className='flex'>
         <Link href="/">Logo</Link>
-        <ul>
-            <li><Link href="/shifts">Shift Manager</Link></li>
-            <li><Link href="/invoices">Invoices</Link></li>
-        </ul>
+        <Link href="/shifts">Shift Manager</Link>
+        <Link href="/invoices">Invoices</Link>
     </nav>
   )
 }
