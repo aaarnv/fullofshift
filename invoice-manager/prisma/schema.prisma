@@ -13,18 +13,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Invoice {
-  id Int @id @default(autoincrement())
-  title String @db.VarChar(255)
-  status Status @default(FUTURE)
-  class String @db.Text
-  startTime DateTime
-  endTime DateTime 
-}
-
 enum Status {
   FUTURE
   LOGGED
   REQUESTED
   PAID
+}
+
+model Shift {
+  id        Int      @id @default(autoincrement())
+  class     String   @db.VarChar(255)
+  grade     String   @db.VarChar(255)
+  status    Status   @default(FUTURE)
+  date      DateTime
+  startTime String   @db.VarChar(5)  // Store as "HH:MM"
+  endTime   String   @db.VarChar(5)  // Store as "HH:MM"
+  recurring Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
