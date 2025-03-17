@@ -1,5 +1,5 @@
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/useAuth";
 import { redirect } from "next/navigation";
 import { format } from "date-fns";
 import prisma from "@/prisma/client";

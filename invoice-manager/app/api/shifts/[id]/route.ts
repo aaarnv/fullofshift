@@ -3,26 +3,26 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 import { addWeeks, endOfMonth, isBefore } from "date-fns";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/useAuth"; 
 
 export async function PATCH(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  { params } : { params: Promise<{ id: string }> }
 ) {
   try {
-    const id = parseInt(params.id);
-    if (isNaN(id)) {
+    const { id } = await params;
+    if (isNaN(parseInt(id))) {
       return NextResponse.json({ error: "Invalid shift ID" }, { status: 400 });
     }
 
     const body = await request.json();
-    
+
     // Update the shift
     const updatedShift = await prisma.shift.update({
-      where: { id },
-      data: { 
+      where: { id: parseInt(id) },
+      data: {
         status: body.status,
-      }
+      },
     });
 
     return NextResponse.json(updatedShift);
@@ -35,16 +35,18 @@ export async function PATCH(
   }
 }
 
-export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
+export async function DELETE(
+  request: NextRequest,
+  { params } : { params: Promise<{ id: string }> }
+) {
   try {
     const session = await getServerSession(authOptions);
     if (!session || !session.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    const userId = session.user.id; 
-
-    const shiftId = parseInt(params.id);
+    const userId = session.user.id;
+    const shiftId = parseInt((await params).id);
     if (isNaN(shiftId)) {
       return NextResponse.json({ error: "Invalid shift ID" }, { status: 400 });
     }
@@ -64,12 +66,12 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
 
     // Verify the shift belongs to the authenticated user
     if (shift.userId !== userId) {
-      return NextResponse.json({ error: "Forbidden: You don’t own this shift" }, { status: 403 });
+      return NextResponse.json({ error: "Forbidden: You don't own this shift" }, { status: 403 });
     }
 
     if (deleteAll && shift.recurring) {
       // Delete all recurring shifts with the same weekly pattern
-      const baseDate = shift.date;
+      const baseDate = new Date(shift.date);
       const lastDayOfMonth = endOfMonth(baseDate);
       let currentDate = baseDate;
       const datesToDelete = [baseDate];
@@ -83,7 +85,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
         where: {
           userId,
           date: {
-            in: datesToDelete,
+            in: datesToDelete.map((date) => date.toISOString().split("T")[0]),
           },
         },
       });
@@ -94,6 +96,7 @@ export async function DELETE(request: NextRequest, { params }: { params: { id: s
       await prisma.shift.delete({
         where: { id: shiftId },
       });
+
       return NextResponse.json({ message: "Shift deleted" }, { status: 200 });
     }
   } catch (error) {

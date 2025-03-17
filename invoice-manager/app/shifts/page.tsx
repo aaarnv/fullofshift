@@ -26,7 +26,7 @@ import { Alert, AlertTitle, AlertDescription } from "@/components/ui/alert";
 import { Calendar, Clock, GraduationCap, School, Repeat, Info, Trash2, CheckCircle, Plus } from "lucide-react";
 import { Status } from "@prisma/client";
 import { Badge } from "@/components/ui/badge";
-import NewShift from "./new/page";
+import { NewShift } from "@/app/shifts/new/NewShift";
 import NavBar from "@/app/components/NavBar";
 
 interface Shift {
