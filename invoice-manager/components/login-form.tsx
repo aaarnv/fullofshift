@@ -23,7 +23,7 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6 opacity-80", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login</CardTitle>
+          <CardTitle className="text-2xl">Login to Full of Shift:</CardTitle>
           <CardDescription>Sign in using your Google account</CardDescription>
         </CardHeader>
         <CardContent>
@@ -33,14 +33,8 @@ export function LoginForm({
               className="w-full"
               onClick={handleGoogleLogin}
             >
-              Login with Google
+              Login or Sign Up with Google
             </Button>
-            <div className="mt-4 text-center text-sm">
-              Don`&apost have an account? 
-              <a href="/signup" className="underline underline-offset-4">
-                Sign up
-              </a>
-            </div>
           </div>
         </CardContent>
       </Card>

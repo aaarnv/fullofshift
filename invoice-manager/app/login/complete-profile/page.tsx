@@ -14,8 +14,8 @@ export default function CompleteProfile() {
   const [wagePerHour, setWagePerHour] = useState("");
   const [contactNumber, setContactNumber] = useState("");
   const [managerName, setManagerName] = useState("");
-  const [bsb, setBsb] = useState(""); // New state for BSB
-  const [accountNumber, setAccountNumber] = useState(""); // New state for account number
+  const [bsb, setBsb] = useState(""); 
+  const [accountNumber, setAccountNumber] = useState(""); 
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -60,8 +60,8 @@ export default function CompleteProfile() {
         wagePerHour: parseFloat(wagePerHour),
         contactNumber,
         managerName,
-        bsb, // Include BSB in the update
-        accountNumber, // Include account number in the update
+        bsb, 
+        accountNumber, 
       });
       router.push("/dashboard");
     } catch (error) {
@@ -97,32 +97,32 @@ export default function CompleteProfile() {
         />
         <Input
           type="text"
-          placeholder="Contact number (e.g., 0416500319)"
+          placeholder="Contact number"
           value={contactNumber}
-          onChange={(e) => setContactNumber(e.target.value.replace(/\D/g, ""))} // Only allow digits
+          onChange={(e) => setContactNumber(e.target.value.replace(/\D/g, ""))} 
           className="mt-4"
           maxLength={10}
         />
         <Input
           type="text"
-          placeholder="Manager's name"
+          placeholder="Company Name"
           value={managerName}
           onChange={(e) => setManagerName(e.target.value)}
           className="mt-4"
         />
         <Input
           type="text"
-          placeholder="BSB (e.g., 062443)"
+          placeholder="BSB"
           value={bsb}
-          onChange={(e) => setBsb(e.target.value.replace(/\D/g, ""))} // Only allow digits
+          onChange={(e) => setBsb(e.target.value.replace(/\D/g, ""))} 
           className="mt-4"
           maxLength={6}
         />
         <Input
           type="text"
-          placeholder="Account number (e.g., 11467258)"
+          placeholder="Account number"
           value={accountNumber}
-          onChange={(e) => setAccountNumber(e.target.value.replace(/\D/g, ""))} // Only allow digits
+          onChange={(e) => setAccountNumber(e.target.value.replace(/\D/g, ""))} 
           className="mt-4"
           maxLength={9}
         />
