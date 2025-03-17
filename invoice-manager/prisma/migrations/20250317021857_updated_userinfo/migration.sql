@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE `User` ADD COLUMN `accountNumber` VARCHAR(191) NULL,
-    ADD COLUMN `bsb` VARCHAR(191) NULL;
