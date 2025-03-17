@@ -3,7 +3,7 @@ import prisma from "@/prisma/client";
 import { createShiftSchema } from "../../validationSchemas";
 import { addWeeks, endOfMonth, isBefore } from "date-fns";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/useAuth";
+import { authOptions } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {

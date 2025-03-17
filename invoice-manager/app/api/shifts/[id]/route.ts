@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 import prisma from "@/prisma/client";
 import { addWeeks, endOfMonth, isBefore } from "date-fns";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/lib/useAuth"; 
+import { authOptions } from "@/lib/auth"; 
 
 export async function PATCH(
   request: NextRequest,
