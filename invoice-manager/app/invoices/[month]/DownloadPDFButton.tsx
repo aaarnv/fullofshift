@@ -86,7 +86,7 @@ export default function DownloadPDFButton({
     });
 
     // Add bank details
-    const finalY = (doc as any).lastAutoTable.finalY || 90;
+    const finalY = (doc as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY || 90;
     doc.setFontSize(12);
     doc.text("Bank Details:", 20, finalY + 20);
     doc.text(user.name || "N/A", 20, finalY + 30);

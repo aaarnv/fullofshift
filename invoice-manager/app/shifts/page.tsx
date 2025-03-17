@@ -63,7 +63,7 @@ const ShiftView = () => {
               const updateResponse = await axios.patch(`/api/shifts/${shift.id}`, {
                 status: "PENDING",
               });
-              console.log(`Updated shift ${shift.id} to PENDING`);
+              console.log(`Updated shift ${shift.id} to PENDING:`, updateResponse.data);
               return { ...shift, status: "PENDING" };
             } catch (err) {
               console.error(`Failed to update shift ${shift.id}:`, err);

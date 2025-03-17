@@ -1,4 +1,4 @@
-import { date, z } from "zod";
+import { z } from "zod";
 
 export const createShiftSchema = z.object({
     class: z.string().min(1).max(255),

@@ -24,7 +24,6 @@ const NewShift = ({ onSuccess }: NewShiftProps) => {
     handleSubmit,
     formState: { errors },
     setValue,
-    watch,
   } = useForm<ShiftForm>({
     resolver: zodResolver(createShiftSchema),
     defaultValues: {

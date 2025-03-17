@@ -31,9 +31,9 @@ export async function POST(request: NextRequest) {
 
     // Parse initial shift date
     let shiftDate = new Date(date);
-    let lastDayOfMonth = endOfMonth(shiftDate);
+    const lastDayOfMonth = endOfMonth(shiftDate);
 
-    let shiftsToCreate = [];
+    const shiftsToCreate = [];
 
     shiftsToCreate.push({
       class: className,
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
     try {
       // Get the session
       const session = await getServerSession(authOptions);
