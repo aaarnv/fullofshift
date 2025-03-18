@@ -179,7 +179,7 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
                 color: "#000",
               }}
             >
-              Invoice No. {shifts.length > 0 ? shifts[0].id : null}
+              Invoice for {monthYear}
             </h2>
             <p style={{ marginBottom: "15px", color: "#000" }}>
               Date: {format(new Date(), "dd/MM/yy")}
