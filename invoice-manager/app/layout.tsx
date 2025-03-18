@@ -16,8 +16,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head />
-      <body>
+      <head>
+      <title>Full of Shift</title>
+      </head>
+      <body suppressHydrationWarning={true}>
         <AuthProvider>
           <ThemeProvider
             attribute="class"

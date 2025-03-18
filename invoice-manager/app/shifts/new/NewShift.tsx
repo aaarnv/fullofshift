@@ -69,7 +69,7 @@ export const NewShift = ({ onSuccess }: NewShiftProps) => {
         <div className="space-y-2">
           <Input
             id="class"
-            placeholder="Class Name"
+            placeholder="Shift Title"
             {...register("class")}
             className={errors.class ? "border-red-500" : ""}
           />
@@ -81,7 +81,7 @@ export const NewShift = ({ onSuccess }: NewShiftProps) => {
         <div className="space-y-2">
           <Input
             id="grade"
-            placeholder="Grade Level"
+            placeholder="Shift Description"
             {...register("grade")}
             className={errors.grade ? "border-red-500" : ""}
           />
@@ -102,8 +102,6 @@ export const NewShift = ({ onSuccess }: NewShiftProps) => {
               <SelectItem value="UPCOMING">Upcoming</SelectItem>
               <SelectItem value="PENDING">Pending</SelectItem>
               <SelectItem value="LOGGED">Logged</SelectItem>
-              <SelectItem value="REQUESTED">Requested</SelectItem>
-              <SelectItem value="PAID">Paid</SelectItem>
             </SelectContent>
           </Select>
           {errors.status && (
@@ -111,7 +109,6 @@ export const NewShift = ({ onSuccess }: NewShiftProps) => {
           )}
         </div>
 
-        {/* Date, Start Time, and End Time in a single row with headings */}
         <div className="flex space-x-2">
           <div className="flex-1 space-y-2">
             <label htmlFor="date" className="text-sm font-medium text-gray-700 ml-1">

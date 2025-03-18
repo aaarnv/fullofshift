@@ -165,7 +165,7 @@ const ShiftView = () => {
   const upcomingShifts = shifts.filter((shift) => shift.status === "UPCOMING");
 
   if (loading) {
-    return <div className="flex justify-center items-center h-48">Loading shifts...</div>;
+    return <div className="loader"></div>;
   }
 
   const renderShiftCard = (shift: Shift, showConfirmButton = false) => (

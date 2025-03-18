@@ -58,7 +58,6 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
     return new Response("Invalid month format", { status: 400 });
   }
 
-  // Fetch the user
   const user = await prisma.user.findUnique({
     where: { id: session.user.id },
     select: {
@@ -114,45 +113,40 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
 
   const totalPay = user.wagePerHour ? totalHours * user.wagePerHour : 0;
 
-  // Format the month and year for display
   const monthYear = formatMonthYear(year, month);
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
-      {/* Navbar */}
       <NavBar />
-
-      {/* Main Content */}
       <div style={{ display: "flex", flex: 1 }}>
-        {/* Left Arrow */}
         <NavigationArrows direction="prev" year={year} month={month} />
 
         {/* Left Side: Invoice Preview */}
         <div
           style={{
             flex: 1,
-            padding: "0", // Remove padding to maximize space
+            padding: "0",
             position: "relative",
-            background: "black", // Match the screenshot's black background
+            background: "black", 
             display: "flex",
             justifyContent: "center",
-            alignItems: "stretch", // Stretch the preview to fill height
-            height: "100%", // Ensure it uses full height
+            alignItems: "stretch", 
+            height: "100%", 
           }}
         >
           <div
             style={{
-              width: "100%", // Use 100% width to fill the left side
-              maxWidth: "none", // Remove maxWidth to allow full expansion
+              width: "100%", 
+              maxWidth: "none", 
               backgroundColor: "#fff",
               boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)",
               borderRadius: "8px",
-              padding: "20px", // Maintain some internal padding
+              padding: "20px", 
               fontFamily: "Arial, sans-serif",
               fontSize: "14px",
-              position: "relative", // Ensure the button overlays correctly
-              height: "100%", // Ensure it fills the height
-              overflow: "auto", // Allow scrolling if content overflows
+              position: "relative", 
+              height: "100%", 
+              overflow: "auto", 
             }}
           >
             <h1
@@ -206,7 +200,7 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
                       textAlign: "left",
                       border: "1px solid #000",
                       color: "#000",
-                      width: "80px", // Slim width for Status column
+                      width: "80px", 
                     }}
                   >
                     Status
@@ -279,7 +273,7 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
                           padding: "8px",
                           border: "1px solid #000",
                           color: "#000",
-                          width: "80px", // Slim width for Status column
+                          width: "80px", 
                         }}
                       >
                         {status}
@@ -334,7 +328,7 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
                 })}
                 <tr>
                   <td
-                    colSpan={4} // Adjusted to span Status, Class Description, Day, and Date
+                    colSpan={4} 
                     style={{
                       padding: "8px",
                       textAlign: "right",
@@ -384,7 +378,6 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
             <p style={{ marginBottom: "5px", color: "#000" }}>Account No: {user.accountNumber}</p>
           </div>
 
-          {/* Overlay Download PDF Button */}
           <DownloadPDFButton
             user={user}
             shifts={filteredShifts.map((shift) => ({
@@ -398,7 +391,6 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
           />
         </div>
 
-        {/* Right Side: Animated Total Pay with Month Above */}
         <div
           style={{
             flex: 1,
@@ -424,7 +416,6 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
           <AnimatedTotalPay target={totalPay} />
         </div>
 
-        {/* Right Arrow */}
         <NavigationArrows direction="next" year={year} month={month} />
       </div>
     </div>

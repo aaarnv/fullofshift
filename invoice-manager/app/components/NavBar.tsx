@@ -22,14 +22,12 @@ const NavBar = () => {
 
   return (
     <nav className="flex justify-between items-center p-4 bg-black text-white">
-      {/* Logo on the Left */}
       <div>
-        <Link href="/dashboard" className="hover:text-gray-300">
+        <Link href="/dashboard" className="hover:text-gray-300 font-extrabold text-xl">
           Full of Shift
         </Link>
       </div>
 
-      {/* Links and Logout Button on the Right */}
       <div className="flex items-center space-x-4">
         <Link href="/shifts" className="hover:text-gray-300">
           Shift Manager

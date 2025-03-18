@@ -23,8 +23,8 @@ export function LoginForm({
     <div className={cn("flex flex-col gap-6 opacity-80", className)} {...props}>
       <Card>
         <CardHeader>
-          <CardTitle className="text-2xl">Login to Full of Shift:</CardTitle>
-          <CardDescription>Sign in using your Google account</CardDescription>
+          <CardTitle className="text-2xl">Full of Shift</CardTitle>
+          <CardDescription>a simple shift manager & invoice generator</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex flex-col gap-6">
@@ -33,7 +33,7 @@ export function LoginForm({
               className="w-full"
               onClick={handleGoogleLogin}
             >
-              Login or Sign Up with Google
+              Sign in with Google
             </Button>
           </div>
         </CardContent>

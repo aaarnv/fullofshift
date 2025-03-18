@@ -7,7 +7,6 @@ import { authOptions } from "@/lib/auth";
 
 export async function POST(request: NextRequest) {
   try {
-    // Get the session
     const session = await getServerSession(authOptions);
     if (!session || !session.user?.id) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
@@ -42,7 +41,7 @@ export async function POST(request: NextRequest) {
       startTime,
       endTime,
       recurring,
-      userId, // Use session userId
+      userId,
     });
 
     if (recurring) {
@@ -56,7 +55,7 @@ export async function POST(request: NextRequest) {
           startTime,
           endTime,
           recurring,
-          userId, // Use session userId
+          userId, 
         });
 
         // Move to the next week
@@ -84,10 +83,10 @@ export async function GET() {
         return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
       }
   
-      const userId = session.user.id; // Extract userId from session
+      const userId = session.user.id; 
   
       const shifts = await prisma.shift.findMany({
-        where: { userId }, // Filter by session userId
+        where: { userId }, 
         orderBy: {
           date: "asc",
         },

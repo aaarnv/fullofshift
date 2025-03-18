@@ -19,7 +19,9 @@ export default function CompleteProfile() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
-  if (status === "loading") return <div>Loading...</div>;
+
+  if (status === "loading") return <div className="loader"></div>;
+
   if (!session) {
     router.push("/login");
     return null;
