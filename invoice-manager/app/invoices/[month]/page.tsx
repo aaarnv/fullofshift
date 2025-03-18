@@ -99,10 +99,12 @@ export default async function InvoicePage({ params }: InvoicePageProps) {
   console.log("Shifts fetched:", shifts.length);
 
   // Calculate the total hours and pay for the current month
-  const filteredShifts = shifts.filter((shift) => {
+  const filteredShifts = shifts
+  .filter((shift) => {
     const shiftDate = new Date(shift.date);
     return shiftDate.getFullYear() === year && shiftDate.getMonth() + 1 === month;
-  });
+  })
+  .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
   const totalHours = filteredShifts.reduce((total, shift) => {
     const start = parseTimeToHours(shift.startTime);
