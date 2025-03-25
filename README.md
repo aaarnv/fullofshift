@@ -2,7 +2,11 @@
 
 https://fullofshift.vercel.app/
 
-(feel free to put in a random BSB and accnt number)
+(feel free to put in a random BSB and account number to test)
+<img width="1439" alt="image" src="https://github.com/user-attachments/assets/f2e6f282-822f-4a00-84bb-e37326ab01c4" />
+<img width="1432" alt="image" src="https://github.com/user-attachments/assets/ce6ebab2-2623-4a27-9c62-06b7e39e8a94" />
+<img width="1430" alt="image" src="https://github.com/user-attachments/assets/7288093b-4540-47fc-b4c1-33c7a8765fd0" />
+<img width="1440" alt="image" src="https://github.com/user-attachments/assets/cd79ed62-66d7-4228-9453-f8e324c7298d" />
 
 ## Overview
 
