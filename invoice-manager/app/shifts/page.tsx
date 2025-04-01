@@ -74,6 +74,9 @@ const ShiftView = () => {
         })
       );
 
+      // Sort shifts in reverse chronological order by date
+      updatedShifts.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
       setShifts(updatedShifts);
       setError("");
     } catch (err) {
@@ -165,7 +168,14 @@ const ShiftView = () => {
   const upcomingShifts = shifts.filter((shift) => shift.status === "UPCOMING");
 
   if (loading) {
-    return <div className="loader"></div>;
+    return (
+      <div className="flex items-center justify-center min-h-screen bg-black text-white">
+        <div className="flex flex-col items-center space-y-4">
+          <div className="loader border-t-4 border-blue-500 rounded-full w-12 h-12 animate-spin"></div>
+          <p>Loading shifts, please wait...</p>
+        </div>
+      </div>
+    );
   }
 
   const renderShiftCard = (shift: Shift, showConfirmButton = false) => (
